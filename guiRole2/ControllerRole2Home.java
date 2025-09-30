@@ -1,7 +1,5 @@
 package guiRole2;
-import java.util.HashMap;
 
-import guiAdminHome.ViewAdminHome;
 
 public class ControllerRole2Home {
 	
@@ -26,7 +24,10 @@ public class ControllerRole2Home {
 	
 	// My code
 	protected static void reviewStudent() {
-		System.out.printf("Still gotta make this shit\n");
+		guiStaffReview.ViewStaffReview.display(
+		        guiRole2.ViewRole2Home.theStage, 
+		        guiRole2.ViewRole2Home.theUser
+		    );
 		return;
 	}
 
@@ -40,7 +41,9 @@ public class ControllerRole2Home {
 	}
 	
 	protected static void parameter() {
-		System.out.printf("Still gotta make this shit. No clue what this means\n");
+		// Pass in the info so you can display the gui
+		guiParameters.ViewParameters.display(guiRole2.ViewRole2Home.theStage, 
+				guiRole2.ViewRole2Home.theUser);
 		return;
 	}
 	

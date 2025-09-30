@@ -89,7 +89,7 @@ public class Database {
 			statement = connection.createStatement(); 
 			// You can use this command to clear the database and restart from fresh.
 			//statement.execute("DROP ALL OBJECTS");
-
+			
 			createTables();  // Create the necessary tables if they don't exist
 		} catch (ClassNotFoundException e) {
 			System.err.println("JDBC Driver not found: " + e.getMessage());
@@ -161,7 +161,27 @@ public class Database {
 	    }
 		return true;
 	}
-	
+	public boolean updatePassword(String username, String newPassword) {
+	    String q = "UPDATE userDB SET password = ? WHERE userName = ?";
+	    try (PreparedStatement ps = connection.prepareStatement(q)) {
+	        ps.setString(1, newPassword);
+	        ps.setString(2, username);
+	        return ps.executeUpdate() > 0;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+	public boolean deleteUserByUsername(String username) {
+	    String q = "DELETE FROM userDB WHERE userName = ?";
+	    try (PreparedStatement ps = connection.prepareStatement(q)) {
+	        ps.setString(1, username);
+	        return ps.executeUpdate() > 0;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 	
 /*******
  * <p> Method: getNumberOfUsers </p>

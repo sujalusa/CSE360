@@ -22,31 +22,33 @@ public class ViewRequests {
     private static double width  = FoundationsMain.WINDOW_WIDTH;
     private static double height = FoundationsMain.WINDOW_HEIGHT;
     
+    // Reference for the in-memory database so this package has access
     private static Database db = FoundationsMain.database;
 
-    private static ViewRequests theView;
-    private static Stage theStage;
-    private static Scene theScene;
-    private static Pane  root;
+    // The users's 
+    private static ViewRequests theView; 
+    private static Stage theStage;			// The Stage that JavaFX has established for us
+    private static Scene theScene;			// The shared Scene each invocation populates
+    private static Pane  root;				// The Pane that holds all the GUI widgets
 
-    private static User theUser;
+    private static User theUser;			// The current logged in User
 
-    // header
+    // header Just like all thre rest
     private static Label  title = new Label("Requests");
     private static Label  userL = new Label();
     private static Button acct  = new Button("Account Update");
     private static Line   sep1  = new Line(20,95,width-20,95);
 
-    // lists that show
-    private static Label openL  = new Label("Open Requests");
-    private static ListView<Request> openList = new ListView<>();
+    // lists that show the data
+    private static Label openL  = new Label("Open Requests");		// Label
+    private static ListView<Request> openList = new ListView<>();	// The actual List
     
-    private static Label closedL= new Label("Closed Requests");
+    private static Label closedL= new Label("Closed Requests");		
     private static ListView<Request> closedList = new ListView<>();
     
     // Showing the details that people left
     private static Label detailsL = new Label("Details");
-    private static TextArea detailsTA = new TextArea();
+    private static TextArea detailsTA = new TextArea();				
     
 
     // actions buttons
@@ -98,7 +100,7 @@ public class ViewRequests {
         setupLabel(closedL, "Arial", 18, 300, Pos.BASELINE_LEFT, 250, 110);
         closedList.setLayoutX(250); closedList.setLayoutY(140); closedList.setPrefSize(210, 320);
         
-     // details (spans the width under both lists)
+     // details (spans the width under both lists) when needed
         setupLabel(detailsL, "Arial", 18, 300, Pos.BASELINE_LEFT, 500, 110);
         detailsTA.setLayoutX(500);
         detailsTA.setLayoutY(140);
@@ -146,7 +148,6 @@ public class ViewRequests {
         root.getChildren().addAll(
         	    title, userL, acct, sep1,
         	    openL, openList, closedL, closedList,
-        	    detailsL, detailsTA,                 // <-- add these
         	    sep4, newBtn, noteCloseBtn, reopenBtn,
         	    back, logout, quit
         	);
